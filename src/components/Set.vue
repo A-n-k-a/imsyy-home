@@ -5,8 +5,8 @@
         <div class="bg-set">
           <el-radio-group v-model="coverType" text-color="#ffffff" @change="radioChange">
             <el-radio value="0" size="large" border>LoliApi</el-radio>
-            <el-radio value="1" size="large" border>雫Api（电脑）</el-radio>
-            <el-radio value="2" size="large" border>雫Api（手机）</el-radio>
+            <el-radio value="1" size="large" border>雫Api(电脑)</el-radio>
+            <el-radio value="2" size="large" border>雫Api(手机)</el-radio>
             <el-radio value="3" size="large" border>默认壁纸</el-radio>
             <el-radio value="4" size="large" border>每日一图</el-radio>
             <el-radio value="5" size="large" border>随机风景</el-radio>
