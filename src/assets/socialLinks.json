@@ -3,25 +3,25 @@
     "name": "Github",
     "icon": "/images/icon/github.png",
     "tip": "去 Github 看看",
-    "url": "https://github.com/imsyy"
+    "url": "https://github.com/A-n-k-a"
   },
   {
     "name": "BiliBili",
     "icon": "/images/icon/bilibili.png",
     "tip": "(゜-゜)つロ 干杯 ~",
-    "url": "https://space.bilibili.com/98544142"
+    "url": "https://space.bilibili.com/399207656"
   },
   {
     "name": "QQ",
     "icon": "/images/icon/qq.png",
     "tip": "有什么事吗",
-    "url": "https://res.abeim.cn/api/qq/?qq=1539250352"
+    "url": "https://res.abeim.cn/api/qq/?qq=3062969285"
   },
   {
     "name": "Email",
     "icon": "/images/icon/email.png",
     "tip": "来封 Email ~",
-    "url": "mailto:one@imsyy.top"
+    "url": "mailto:businiaoanka@anka1.top"
   },
   {
     "name": "Twitter",
@@ -34,5 +34,11 @@
     "icon": "/images/icon/telegram.png",
     "tip": "你懂的 ~",
     "url": "https://t.me/bottom_user"
+  },
+  {
+    "name": "Sponsor",
+    "icon": "/images/icon/捐赠.png",
+    "tip": "我很可爱，请给我钱 XD",
+    "url": "https://pay.anka1.top"
   }
 ]
