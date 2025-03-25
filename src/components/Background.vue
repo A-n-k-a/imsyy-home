@@ -39,12 +39,18 @@ const bgRandom = Math.floor(Math.random() * 10 + 1);
 // 更换壁纸链接
 const changeBg = (type) => {
   if (type == 0) {
-    bgUrl.value = `/images/background${bgRandom}.jpg`;
+    bgUrl.value = `https://www.loliapi.com/acg/`;
   } else if (type == 1) {
-    bgUrl.value = "https://api.dujin.org/bing/1920.php";
+    bgUrl.value = "https://api.imlazy.ink/img";
   } else if (type == 2) {
-    bgUrl.value = "https://api.vvhan.com/api/wallpaper/views";
+    bgUrl.value = "https://api.imlazy.ink/img-phone";
   } else if (type == 3) {
+    bgUrl.value = "/images/background${bgRandom}.jpg";
+  } else if (type == 4) {
+    bgUrl.value = "https://api.dujin.org/bing/1920.php";
+  } else if (type == 5) {
+    bgUrl.value = "https://api.vvhan.com/api/wallpaper/views";
+  } else if (type == 6) {
     bgUrl.value = "https://api.vvhan.com/api/wallpaper/acg";
   }
 };
