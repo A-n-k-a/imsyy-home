@@ -88,11 +88,14 @@ const uuid = ref('');
 
 const fromText = computed(() => {
   if (fromWho.value && from.value) {
-    return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span> 「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
+    return `<a :href="https://www.baidu.com/s?word=${fromWho.value}" target="_blank" class="hitokoto-link">——${fromWho.value}</a><a :href="https://www.baidu.com/s?word=${from.value}" target="_blank" class="hitokoto-link">「${from.value}」</a>`
+    // return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span> 「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
   } else if (from.value) {
-    return `——「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
+    return `<a :href="https://www.baidu.com/s?word=${from.value}" target="_blank" class="hitokoto-link">——「${from.value}」</a>`
+    // return `——「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
   } else if (fromWho.value) {
-    return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span>`;
+    return `<a :href="https://www.baidu.com/s?word=${fromWho.value}" target="_blank" class="hitokoto-link">——${fromWho.value}</a>`
+    // return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span>`;
   } else {
     return '作者/来源获取中...';
   }
