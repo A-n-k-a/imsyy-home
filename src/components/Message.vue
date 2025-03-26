@@ -18,42 +18,11 @@
           <QuoteLeft />
         </Icon>
         <Transition name="fade" mode="out-in">
-          <!-- <div :key="descriptionText.hello + descriptionText.text" class="text"> -->
-            <!-- <p>{{ descriptionText.hello }}</p>
-            <p>{{ descriptionText.text }}</p> -->
-            <!-- 替换为我自己的一言组件 -->
-            <div>
-              <div id="hitokoto_div" class="description">
-                <span>『</span>{{ hitokoto || ':D 一言获取中...' }}<span>』</span>
-              </div>
-
-              <div id="fromWho_from">
-                <p v-if="fromWho && from">
-                  ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`">
-                    {{ fromWho }}
-                  </span> 
-                  「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`">
-                    {{ from }}
-                  </span>」
-                </p>
-                <p v-else-if="from">
-                  ——「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`">
-                    {{ from }}
-                  </span>」
-                </p>
-                <p v-else-if="fromWho">
-                  ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`">
-                    {{ fromWho }}
-                  </span>
-                </p>
-                <p v-else>作者/来源获取中...</p>
-              </div>
-
-              <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank">
-                一言来自：hitokoto.cn
-              </a>
-            </div>
-          <!-- </div> -->
+          <div :key="descriptionText.hello + descriptionText.text" class="text">
+            <p>{{ descriptionText.hello }}</p>
+            <p>{{ descriptionText.text }}</p>
+            <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a>
+          </div>
         </Transition>
         <Icon size="16">
           <QuoteRight />
@@ -120,12 +89,23 @@ watch(
   },
 );
 // 我的自定义一言组件
-import { ref, onMounted } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 
 const hitokoto = ref('');
 const fromWho = ref('');
 const from = ref('');
 const uuid = ref('');
+const fromText = computed(() => {
+  if (fromWho.value && from.value) {
+    return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span> 「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
+  } else if (from.value) {
+    return `——「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
+  } else if (fromWho.value) {
+    return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span>`;
+  } else {
+    return '作者/来源获取中...';
+  }
+});
 
 const fetchHitokoto = async () => {
   try {
@@ -143,6 +123,22 @@ const fetchHitokoto = async () => {
 
 onMounted(fetchHitokoto);
 </script>
+
+<!-- 自定义一言组件所需样式 -->
+<style scoped>
+.purpleText {
+  color: purple;
+}
+.textBackground {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.hitokoto-link {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+}
+</style>
 
 <style lang="scss" scoped>
 .message {
