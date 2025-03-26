@@ -20,9 +20,10 @@
         <Transition name="fade" mode="out-in">
           <div :key="descriptionText.hello + descriptionText.text" class="text">
             <!-- <p>{{ descriptionText.hello }}</p> -->
-            <p>{{ hitokoto.value }}</p>
-            <!-- <p>{{ descriptionText.text }}</p> -->
-            <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div>
+             <!-- <p>{{ descriptionText.text }}</p> -->
+            <div id="descriptionText_hello"></div>
+            <div id="descriptionText_text"></div>
+            <!-- <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div> -->
             <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a>
           </div>
         </Transition>
@@ -120,6 +121,8 @@ watch(
   () => store.boxOpenState,
   (value) => {
     if (value) {
+      document.getElementById("descriptionText_hello").innerHTML = `<p>{{ descriptionText.hello }}</p>`
+      document.getElementById("descriptionText_text").innerHTML = `<p>{{ descriptionText.text }}</p>`
       descriptionText.hello = import.meta.env.VITE_DESC_HELLO_OTHER;
       descriptionText.text = import.meta.env.VITE_DESC_TEXT_OTHER;
     } else {
