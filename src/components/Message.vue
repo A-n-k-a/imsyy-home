@@ -75,20 +75,6 @@ const changeBox = () => {
   }
 };
 
-// 监听状态变化
-watch(
-  () => store.boxOpenState,
-  (value) => {
-    if (value) {
-      descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO_OTHER;
-      descriptionText.text = fromText.value || import.meta.env.VITE_DESC_TEXT_OTHER;
-    } else {
-      descriptionText.hello = import.meta.env.VITE_DESC_HELLO;
-      descriptionText.text = import.meta.env.VITE_DESC_TEXT;
-    }
-  },
-);
-
 // 我的自定义一言组件
 import { ref, computed, onMounted, watch } from 'vue';
 // import { useStore } from 'vuex';
@@ -120,14 +106,26 @@ const fetchHitokoto = async () => {
     from.value = data.from;
     uuid.value = data.uuid;
 
-    descriptionText.value.hello = hitokoto.value;
-    descriptionText.value.text = fromText.value;
   } catch (error) {
     console.error('Error fetching hitokoto:', error);
   }
 };
 
 onMounted(fetchHitokoto);
+
+// 监听状态变化
+watch(
+  () => store.boxOpenState,
+  (value) => {
+    if (value) {
+      descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO_OTHER;
+      descriptionText.text = fromText.value || import.meta.env.VITE_DESC_TEXT_OTHER;
+    } else {
+      descriptionText.hello = import.meta.env.VITE_DESC_HELLO;
+      descriptionText.text = import.meta.env.VITE_DESC_TEXT;
+    }
+  },
+);
 </script>
 
 <!-- 自定义一言组件所需样式 -->
