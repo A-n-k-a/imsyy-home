@@ -136,7 +136,7 @@ watch(
       descriptionText.text = import.meta.env.VITE_DESC_TEXT_OTHER;
     } else {
       descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO;
-      descriptionText.text = fromText || import.meta.env.VITE_DESC_TEXT;
+      descriptionText.text = fromText.value || import.meta.env.VITE_DESC_TEXT;
     }
   },
 );
