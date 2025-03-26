@@ -19,7 +19,8 @@
         </Icon>
         <Transition name="fade" mode="out-in">
           <div :key="descriptionText.hello + descriptionText.text" class="text">
-            <p>{{ descriptionText.hello }}</p>
+            <!-- <p>{{ descriptionText.hello }}</p> -->
+            <p>{{ hitokoto.value }}</p>
             <!-- <p>{{ descriptionText.text }}</p> -->
             <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div>
             <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a>
@@ -56,9 +57,7 @@ const siteUrl = computed(() => {
 
 // 简介区域文字
 const descriptionText = reactive({
-  // hello: import.meta.env.VITE_DESC_HELLO,
-  // text: import.meta.env.VITE_DESC_TEXT,
-  hello: hitokoto.value,
+  hello: import.meta.env.VITE_DESC_HELLO,
   text: import.meta.env.VITE_DESC_TEXT,
 });
 
