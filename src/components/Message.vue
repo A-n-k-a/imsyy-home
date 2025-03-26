@@ -138,9 +138,9 @@ watch(
   text-decoration: underline;
 }
 .hitokoto-link {
+  float: right;
   display: block;
   text-align: right;
-  margin-top: 10px;
 }
 </style>
 
