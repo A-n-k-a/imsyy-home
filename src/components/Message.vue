@@ -18,29 +18,42 @@
           <QuoteLeft />
         </Icon>
         <Transition name="fade" mode="out-in">
-          <div :key="descriptionText.hello + descriptionText.text" class="text">
+          <!-- <div :key="descriptionText.hello + descriptionText.text" class="text"> -->
             <!-- <p>{{ descriptionText.hello }}</p>
             <p>{{ descriptionText.text }}</p> -->
             <!-- 替换为我自己的一言组件 -->
-            <p>
-              <p class="description">
-                <span>『</span>{{ hitokoto }}<span>』</span>
-              </p>
-            </p>
-            <p>
-              <p v-if="fromWho && from">
-                ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`"> {{ fromWho }} </span>
-                「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`"> {{ from }} </span>」
-              </p>
-              <p v-else-if="from">
-                ——「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`"> {{ from }} </span>」
-              </p>
-              <p v-else-if="fromWho">
-                ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`"> {{ fromWho }} </span>
-              </p>
-              <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank">一言来自：hitokoto.cn</a>
-            </p>
-          </div>
+            <div>
+              <div id="hitokoto_div" class="description">
+                <span>『</span>{{ hitokoto || ':D 一言获取中...' }}<span>』</span>
+              </div>
+
+              <div id="fromWho_from">
+                <p v-if="fromWho && from">
+                  ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`">
+                    {{ fromWho }}
+                  </span> 
+                  「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`">
+                    {{ from }}
+                  </span>」
+                </p>
+                <p v-else-if="from">
+                  ——「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`">
+                    {{ from }}
+                  </span>」
+                </p>
+                <p v-else-if="fromWho">
+                  ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`">
+                    {{ fromWho }}
+                  </span>
+                </p>
+                <p v-else>作者/来源获取中...</p>
+              </div>
+
+              <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank">
+                一言来自：hitokoto.cn
+              </a>
+            </div>
+          <!-- </div> -->
         </Transition>
         <Icon size="16">
           <QuoteRight />
