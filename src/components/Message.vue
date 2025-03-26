@@ -59,10 +59,10 @@ const siteUrl = computed(() => {
 
 // 简介区域文字
 const descriptionText = reactive({
-  // hello: import.meta.env.VITE_DESC_HELLO,
-  // text: import.meta.env.VITE_DESC_TEXT,
-  hello: hitokoto.value || import.meta.env.VITE_DESC_HELLO,
-  text: fromText.value || import.meta.env.VITE_DESC_TEXT,
+  hello: import.meta.env.VITE_DESC_HELLO,
+  text: import.meta.env.VITE_DESC_TEXT,
+  // hello: hitokoto.value || import.meta.env.VITE_DESC_HELLO,
+  // text: fromText.value || import.meta.env.VITE_DESC_TEXT,
 });
 
 // 切换右侧功能区
@@ -92,13 +92,16 @@ const uuid = ref('');
 
 const fromText = computed(() => {
   if (fromWho.value && from.value) {
-    return `<a :href="https://www.baidu.com/s?word=${fromWho.value}" target="_blank" class="hitokoto-link">——${fromWho.value}</a><a :href="https://www.baidu.com/s?word=${from.value}" target="_blank" class="hitokoto-link">「${from.value}」</a>`
+    return `——${fromWho.value}「${from.value}」`
+    // return `<a :href="https://www.baidu.com/s?word=${fromWho.value}" target="_blank" class="hitokoto-link">——${fromWho.value}</a><a :href="https://www.baidu.com/s?word=${from.value}" target="_blank" class="hitokoto-link">「${from.value}」</a>`
     // return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span> 「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
   } else if (from.value) {
-    return `<a :href="https://www.baidu.com/s?word=${from.value}" target="_blank" class="hitokoto-link">——「${from.value}」</a>`
+    return `——「${from.value}」`
+    // return `<a :href="https://www.baidu.com/s?word=${from.value}" target="_blank" class="hitokoto-link">——「${from.value}」</a>`
     // return `——「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
   } else if (fromWho.value) {
-    return `<a :href="https://www.baidu.com/s?word=${fromWho.value}" target="_blank" class="hitokoto-link">——${fromWho.value}</a>`
+    return `——${fromWho.value}`
+    // return `<a :href="https://www.baidu.com/s?word=${fromWho.value}" target="_blank" class="hitokoto-link">——${fromWho.value}</a>`
     // return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span>`;
   } else {
     return '作者/来源获取中...';
@@ -115,8 +118,8 @@ const fetchHitokoto = async () => {
     from.value = data.from;
     uuid.value = data.uuid;
 
-    descriptionText.hello = hitokoto.value;
-    descriptionText.text = fromText.value;
+    descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO;
+    descriptionText.text = fromText.value || import.meta.env.VITE_DESC_TEXT;
   } catch (error) {
     console.error('Error fetching hitokoto:', error);
   }
