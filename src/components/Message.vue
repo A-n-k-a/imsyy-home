@@ -56,8 +56,7 @@ const siteUrl = computed(() => {
 
 // 简介区域文字
 const descriptionText = reactive({
-  // hello: import.meta.env.VITE_DESC_HELLO,
-  hello: hitokoto.value,
+  hello: import.meta.env.VITE_DESC_HELLO,
   text: import.meta.env.VITE_DESC_TEXT,
 });
 
