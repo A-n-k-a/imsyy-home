@@ -55,8 +55,8 @@ const siteUrl = computed(() => {
 
 // 简介区域文字
 const descriptionText = reactive({
-  hello: import.meta.env.VITE_DESC_HELLO,
-  text: import.meta.env.VITE_DESC_TEXT,
+  hello: hitokoto.value || import.meta.env.VITE_DESC_HELLO,
+  text: fromText.value || import.meta.env.VITE_DESC_TEXT,
 });
 
 // 切换右侧功能区
@@ -80,21 +80,24 @@ watch(
   () => store.boxOpenState,
   (value) => {
     if (value) {
-      descriptionText.hello = import.meta.env.VITE_DESC_HELLO_OTHER;
-      descriptionText.text = import.meta.env.VITE_DESC_TEXT_OTHER;
+      descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO_OTHER;
+      descriptionText.text = fromText.value || import.meta.env.VITE_DESC_TEXT_OTHER;
     } else {
       descriptionText.hello = import.meta.env.VITE_DESC_HELLO;
       descriptionText.text = import.meta.env.VITE_DESC_TEXT;
     }
   },
 );
+
 // 我的自定义一言组件
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, onMounted, watch } from 'vue';
+// import { useStore } from 'vuex';
 
 const hitokoto = ref('');
 const fromWho = ref('');
 const from = ref('');
 const uuid = ref('');
+
 const fromText = computed(() => {
   if (fromWho.value && from.value) {
     return `——<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${fromWho.value}'\" > ${fromWho.value} </span> 「<span @click=\"() => window.location.href='https://www.baidu.com/s?word=${from.value}'\" > ${from.value} </span>」`;
@@ -116,6 +119,9 @@ const fetchHitokoto = async () => {
     fromWho.value = data.from_who;
     from.value = data.from;
     uuid.value = data.uuid;
+
+    descriptionText.value.hello = hitokoto.value;
+    descriptionText.value.text = fromText.value;
   } catch (error) {
     console.error('Error fetching hitokoto:', error);
   }
