@@ -55,8 +55,8 @@ const siteUrl = computed(() => {
 
 // 简介区域文字
 const descriptionText = reactive({
-  hello: hitokoto.value || import.meta.env.VITE_DESC_HELLO,
-  text: fromText.value || import.meta.env.VITE_DESC_TEXT,
+  hello: import.meta.env.VITE_DESC_HELLO,
+  text: import.meta.env.VITE_DESC_TEXT,
 });
 
 // 切换右侧功能区
