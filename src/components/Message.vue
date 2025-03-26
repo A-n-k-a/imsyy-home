@@ -20,10 +20,10 @@
         <Transition name="fade" mode="out-in">
           <div :key="descriptionText.hello + descriptionText.text" class="text">
             <p>{{ descriptionText.hello }}</p>
-            <!-- <p>{{ descriptionText.text }}</p> -->
-            <div id="hitokoto_div" class="description"><span>『</span>{{ hitokoto || ':D 一言获取中...' }}<span>』</span></div>
-            <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div>
-            <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a>
+            <p>{{ descriptionText.text }}</p>
+            <!-- <div id="hitokoto_div" class="description"><span>『</span>{{ hitokoto || ':D 一言获取中...' }}<span>』</span></div> -->
+            <!-- <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div> -->
+            <!-- <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a> -->
           </div>
         </Transition>
         <Icon size="16">
