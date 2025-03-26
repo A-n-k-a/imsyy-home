@@ -118,11 +118,11 @@ watch(
   () => store.boxOpenState,
   (value) => {
     if (value) {
-      descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO_OTHER;
-      descriptionText.text = fromText.value || import.meta.env.VITE_DESC_TEXT_OTHER;
+      descriptionText.hello = import.meta.env.VITE_DESC_HELLO_OTHER;
+      descriptionText.text = import.meta.env.VITE_DESC_TEXT_OTHER;
     } else {
-      descriptionText.hello = import.meta.env.VITE_DESC_HELLO;
-      descriptionText.text = import.meta.env.VITE_DESC_TEXT;
+      descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO;
+      descriptionText.text = fromText || import.meta.env.VITE_DESC_TEXT;
     }
   },
 );
