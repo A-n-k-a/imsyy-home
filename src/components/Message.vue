@@ -20,10 +20,9 @@
         <Transition name="fade" mode="out-in">
           <div :key="descriptionText.hello + descriptionText.text" class="text">
             <!-- <p>{{ descriptionText.hello }}</p> -->
+            <p>{{ hitokoto.value }}</p>
             <!-- <p>{{ descriptionText.text }}</p> -->
-            <div id="hitokoto_div" class="description"><span>『</span>{{ descriptionText.hello }}<span>』</span></div>
-            <div id="fromWho_from" v-html="descriptionText.text"></div>
-            <!-- <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div> -->
+            <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div>
             <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a>
           </div>
         </Transition>
@@ -58,10 +57,8 @@ const siteUrl = computed(() => {
 
 // 简介区域文字
 const descriptionText = reactive({
-  // hello: import.meta.env.VITE_DESC_HELLO,
-  // text: import.meta.env.VITE_DESC_TEXT,
-  hello: ':D 一言获取中...',
-  text: '作者/来源获取中...'
+  hello: import.meta.env.VITE_DESC_HELLO,
+  text: import.meta.env.VITE_DESC_TEXT,
 });
 
 // 切换右侧功能区
@@ -110,8 +107,6 @@ const fetchHitokoto = async () => {
     fromWho.value = data.from_who;
     from.value = data.from;
     uuid.value = data.uuid;
-    descriptionText.value.hello = hitokoto.value;
-    descriptionText.value.text = fromText.value;
 
   } catch (error) {
     console.error('Error fetching hitokoto:', error);
@@ -128,10 +123,8 @@ watch(
       descriptionText.hello = import.meta.env.VITE_DESC_HELLO_OTHER;
       descriptionText.text = import.meta.env.VITE_DESC_TEXT_OTHER;
     } else {
-      // descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO;
-      // descriptionText.text = fromText || import.meta.env.VITE_DESC_TEXT;
-      descriptionText.value.hello = hitokoto.value || ':D 一言获取中...';
-      descriptionText.value.text = fromText.value || '作者/来源获取中...';
+      descriptionText.hello = hitokoto.value || import.meta.env.VITE_DESC_HELLO;
+      descriptionText.text = fromText || import.meta.env.VITE_DESC_TEXT;
     }
   },
 );
