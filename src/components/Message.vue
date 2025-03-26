@@ -25,7 +25,7 @@
             <p v-html="descriptionText.text"></p>
             <!-- <div id="hitokoto_div" class="description"><span>『</span>{{ hitokoto || ':D 一言获取中...' }}<span>』</span></div> -->
             <!-- <div id="fromWho_from" v-html="fromText" class="hitokoto-link"></div> -->
-            <!-- <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a> -->
+            <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank" class="hitokoto-link">一言来自：hitokoto.cn</a>
           </div>
         </Transition>
         <Icon size="16">
@@ -225,6 +225,10 @@ watch(
         p {
           &:nth-of-type(1) {
             font-family: "Pacifico-Regular";
+          }
+          // 新增的右对齐样式
+          &:nth-of-type(2) {
+            text-align: right;
           }
         }
       }
