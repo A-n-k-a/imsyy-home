@@ -152,10 +152,7 @@ watch(
   text-decoration: underline;
 }
 .hitokoto-link {
-  margin-top: 10px;
-  font-weight: bold;
-  align-self: flex-end;
-  font-size: 1.1rem;
+  text-align: right;
 }
 </style>
 
