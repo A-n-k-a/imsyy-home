@@ -19,8 +19,25 @@
         </Icon>
         <Transition name="fade" mode="out-in">
           <div :key="descriptionText.hello + descriptionText.text" class="text">
-            <p>{{ descriptionText.hello }}</p>
-            <p>{{ descriptionText.text }}</p>
+            <!-- <p>{{ descriptionText.hello }}</p>
+            <p>{{ descriptionText.text }}</p> -->
+            <!-- 替换为我自己的一言组件 -->
+            <div>
+              <p class="description">
+                <span>『</span>{{ hitokoto }}<span>』</span>
+              </p>
+              <p v-if="fromWho && from">
+                ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`"> {{ fromWho }} </span>
+                「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`"> {{ from }} </span>」
+              </p>
+              <p v-else-if="from">
+                ——「<span @click="() => window.location.href=`https://www.baidu.com/s?word=${from}`"> {{ from }} </span>」
+              </p>
+              <p v-else-if="fromWho">
+                ——<span @click="() => window.location.href=`https://www.baidu.com/s?word=${fromWho}`"> {{ fromWho }} </span>
+              </p>
+              <a :href="`https://hitokoto.cn/?uuid=${uuid}`" target="_blank">查看原链接</a>
+            </div>
           </div>
         </Transition>
         <Icon size="16">
@@ -87,6 +104,29 @@ watch(
     }
   },
 );
+// 我的自定义一言组件
+import { ref, onMounted } from 'vue';
+
+const hitokoto = ref('');
+const fromWho = ref('');
+const from = ref('');
+const uuid = ref('');
+
+const fetchHitokoto = async () => {
+  try {
+    const response = await fetch('https://v1.hitokoto.cn/');
+    const data = await response.json();
+    
+    hitokoto.value = data.hitokoto;
+    fromWho.value = data.from_who;
+    from.value = data.from;
+    uuid.value = data.uuid;
+  } catch (error) {
+    console.error('Error fetching hitokoto:', error);
+  }
+};
+
+onMounted(fetchHitokoto);
 </script>
 
 <style lang="scss" scoped>
