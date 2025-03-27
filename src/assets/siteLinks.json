@@ -35,7 +35,7 @@
     "link": "https://status.imsyy.top/"
   },
   {
-    "icon": "/images/svg/主页.svg",
+    "icon": "Home",
     "name": "旧版主页",
     "link": "https://old1.anka1.top/"
   }
