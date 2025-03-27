@@ -25,20 +25,14 @@
   },
   {
     "name": "X（原Twitter）",
-    "icon": "/images/icon/twitter.png",
-    "tip": "你懂的🟦🐦 ~",
-    "url": "https://twitter.com/iimmsyy"
-  },
-  {
-    "name": "Telegram",
-    "icon": "/images/icon/telegram.png",
-    "tip": "你懂的🧻✈️ ~",
-    "url": "https://t.me/bottom_user"
+    "icon": "/images/svg/X_logo_2023.svg",
+    "tip": "X（原Twitter）",
+    "url": "https://x.com/Businiaoanka"
   },
   {
     "name": "Sponsor",
-    "icon": "/images/icon/捐赠.png",
-    "tip": "我很可爱，请给我钱 XD",
+    "icon": "/images/svg/捐赠.svg",
+    "tip": "我很可爱,请给我钱 XD",
     "url": "https://pay.anka1.top"
   }
 ]
