@@ -38,5 +38,10 @@
     "icon": "Home",
     "name": "旧版主页",
     "link": "https://old1.anka1.top/"
+  },
+  {
+    "icon": "Donate",
+    "name": "捐赠",
+    "link": "https://pay.anka1.top/"
   }
 ]

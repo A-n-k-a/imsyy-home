@@ -25,14 +25,14 @@
   },
   {
     "name": "X（原Twitter）",
-    "icon": "/images/svg/X_logo_2023.svg",
+    "icon": "/images/svg/x-social-media-white-icon.svg",
     "tip": "X（原Twitter）",
     "url": "https://x.com/Businiaoanka"
   },
   {
     "name": "Sponsor",
     "icon": "/images/svg/捐赠.svg",
-    "tip": "我很可爱,请给我钱 XD",
+    "tip": "我很可爱，请给我钱",
     "url": "https://pay.anka1.top"
   }
 ]
