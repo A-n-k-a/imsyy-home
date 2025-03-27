@@ -11,7 +11,8 @@
             -
           </span>
           {{ fullYear }}
-          <a :href="siteUrl">{{ siteAuthor }}</a> |
+          <a :href="originUrl">{{ siteAuthor }}</a> |
+          <!-- <a :href="siteUrl">{{ siteAuthor }}</a> | -->
         </span>
         <!-- 以下信息请不要修改哦 -->
         <!-- <span class="hidden">
@@ -45,6 +46,8 @@
 import { MusicOne } from "@icon-park/vue-next";
 import { mainStore } from "@/store";
 import config from "@/../package.json";
+
+var originUrl = window.location.origin;   // 返回基础 URL
 
 const store = mainStore();
 const fullYear = new Date().getFullYear();
