@@ -33,5 +33,10 @@
     "icon": "LaptopCode",
     "name": "站点监测",
     "link": "https://status.imsyy.top/"
+  },
+  {
+    "icon": "/images/svg/主页.svg",
+    "name": "旧版主页",
+    "link": "https://old1.anka1.top/"
   }
 ]
