@@ -125,7 +125,10 @@ const fetchHitokoto = async () => {
   }
 };
 
-onMounted(fetchHitokoto);
+// onMounted(fetchHitokoto);
+onMounted(() => {
+  setTimeout(fetchHitokoto, 3000); // 延迟 3 秒后执行 fetchHitokoto
+});
 
 // 监听状态变化
 watch(
