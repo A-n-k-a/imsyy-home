@@ -39,7 +39,7 @@ const bgRandom = Math.floor(Math.random() * 10 + 1);
 // 更换壁纸链接
 const changeBg = (type) => {
   if (type == 0) {
-    bgUrl.value = `https://www.loliapi.com/acg/`;
+    bgUrl.value = `https://i.xiaofa520.cn/`;
   } else if (type == 1) {
     bgUrl.value = "https://api.imlazy.ink/img";
   } else if (type == 2) {
