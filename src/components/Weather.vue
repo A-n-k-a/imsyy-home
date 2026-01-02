@@ -20,6 +20,7 @@
 <script setup>
 import { getAdcode, getWeather, getOtherWeather } from "@/api";
 import { Error } from "@icon-park/vue-next";
+import { saveAdcodeCache } from "../api";
 
 // 高德开发者 Key
 const mainKey = import.meta.env.VITE_WEATHER_KEY;
@@ -88,6 +89,10 @@ const getWeatherData = async () => {
         winddirection: result.lives[0].winddirection,
         windpower: result.lives[0].windpower,
       };
+      // 天气成功后再缓存 adcode
+      if (result.lives[0].weather || result.lives[0].temperature || result.lives[0].winddirection || result.lives[0].windpower) {
+        saveAdcodeCache(adCode);
+      }
     }
   } catch (error) {
     console.error("天气信息获取失败:" + error);
