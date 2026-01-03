@@ -20,7 +20,7 @@
 <script setup>
 import { getAdcode, getWeather, getOtherWeather } from "@/api";
 import { Error } from "@icon-park/vue-next";
-import { saveAdcodeCache } from "../api";
+import { saveAdcodeCache, getCFWeather } from "@/api";
 
 // 高德开发者 Key
 const mainKey = import.meta.env.VITE_WEATHER_KEY;
@@ -57,18 +57,25 @@ const getWeatherData = async () => {
     // 获取地理位置信息
     if (!mainKey) {
       console.log("未配置，使用备用天气接口");
-      const result = await getOtherWeather();
+      // const result = await getOtherWeather();
+      const result = await getCFWeather();
       console.log(result);
-      const data = result.result;
+      // const data = result.result;
       weatherData.adCode = {
-        city: data.city.City || "未知地区",
+        // city: data.city.City || "未知地区",
         // adcode: data.city.cityId,
+        city: result.resolved.city.name || "未知地区",
+        adcode: result.resolved.city.id
       };
       weatherData.weather = {
-        weather: data.condition.day_weather,
-        temperature: getTemperature(data.condition.min_degree, data.condition.max_degree),
-        winddirection: data.condition.day_wind_direction,
-        windpower: data.condition.day_wind_power,
+        // weather: data.condition.day_weather,
+        weather: result.weather.now.text,
+        // temperature: getTemperature(data.condition.min_degree, data.condition.max_degree),
+        temperature: result.weather.now.temp,
+        // winddirection: data.condition.day_wind_direction,
+        winddirection: result.weather.now.windDir,
+        // windpower: data.condition.day_wind_power,
+        windpower: result.weather.now.windScale,
       };
     } else {
       // 获取 Adcode

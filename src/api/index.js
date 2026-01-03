@@ -155,3 +155,9 @@ export const getOtherWeather = async () => {
   const res = await fetch("https://api.oioweb.cn/api/weather/GetWeather");
   return await res.json();
 };
+
+// 自建Cloudflare Workers天气API，使用ip.sb定位，和风天气作数据源，日限1000次
+export const getCFWeather = async () => {
+  const res = await fetch(`https://ip-weather.anka1.top`);
+  return await res.json();
+};
